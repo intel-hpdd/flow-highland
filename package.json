@@ -1,5 +1,5 @@
 {
-  "name": "flow-highland",
+  "name": "intel-flow-highland",
   "version": "1.0.0",
   "description": "A module to hold highland flow types",
   "scripts": {
@@ -13,6 +13,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.intel.com/IML/flow-highland.git"
+  },
+  "publishConfig": {
+    "registry": "https://ubit-artifactory-or.intel.com/artifactory/api/npm/iml-npm-local"
   },
   "author": "IML Team",
   "license": "MIT",
