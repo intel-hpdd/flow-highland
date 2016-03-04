@@ -1,4 +1,5 @@
 // @flow
+
 // INTEL CONFIDENTIAL
 //
 // Copyright 2013-2016 Intel Corporation All Rights Reserved.
@@ -22,6 +23,5 @@
 import type {HighlandStream} from '../include/highland';
 
 declare module 'highland' {
-  declare var exports:(xs:Array<any> | Function | Promise | void) => HighlandStream;
-  declare var nil:Object
+  declare var exports: { (xs:Array<any> | Function | Promise | void): HighlandStream; nil:Object }
 }
