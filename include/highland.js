@@ -22,13 +22,16 @@
 
 type IdFn<T> = (xs:T) => T;
 type TransformFn<X,Y> = (xs:X) => Y;
+import type {Writable} from 'stream';
 
 export type HighlandStream = {
   write(x:any):boolean;
   destroy():void;
   tap(fn:IdFn):HighlandStream;
+  map(fn:TransformFn):HighlandStream;
+  filter(fn:TransformFn):HighlandStream;
   consume(fn:(err:Error, x:any, push:Function, next:Function) => void):HighlandStream;
-  pipe<T>(fn:TransformFn<T>):T;
+  pipe(dest:Writable):Writable;
   each(fn:(xs:any) => void):HighlandStream;
 }
 
