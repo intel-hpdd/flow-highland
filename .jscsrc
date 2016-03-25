@@ -1,12 +1,8 @@
 {
   "esnext": true,
-  "requireCurlyBraces": [
-    "for",
-    "while",
-    "do",
-    "try",
-    "catch"
-  ],
+  "disallowMultipleVarDecl": false,
+  "requireSpacesInsideObjectBrackets": false,
+  "requireTrailingComma": false,
   "requireSpaceAfterKeywords": [
     "if",
     "else",
@@ -19,7 +15,8 @@
     "catch"
   ],
   "requireParenthesesAroundIIFE": true,
-  "requireSpacesInFunctionExpression": {
+  "requireSpacesInFunction": {
+    "beforeOpeningRoundBrace": true,
     "beforeOpeningCurlyBrace": true
   },
   "disallowEmptyBlocks": true,
@@ -81,17 +78,11 @@
   "disallowMixedSpacesAndTabs": true,
   "requireLineFeedAtFileEnd": true,
   "maximumLineLength": 120,
+  "requireEnhancedObjectLiterals": true,
   "requireCapitalizedConstructors": true,
-  "jsDoc": {
-    "checkAnnotations": "jsdoc3",
-    "checkParamNames": true,
-    "checkRedundantParams": true,
-    "checkReturnTypes": true,
-    "checkRedundantReturns": true,
-    "checkTypes": true,
-    "requireParamTypes": true
-  },
   "excludeFiles": [
-    "node_modules/**"
+    "node_modules/**",
+    "dist/**",
+    "coverage/**"
   ]
 }

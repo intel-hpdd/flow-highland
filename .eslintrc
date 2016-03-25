@@ -22,14 +22,19 @@
       2,
       2
     ],
-    "no-console": 0
-  },
-  "ecmaFeatures": {
-    "modules": true
+    "curly": [
+      2,
+      "multi",
+      "consistent"
+    ]
   },
   "env": {
     "es6": true,
     "node": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
   },
   "extends": "eslint:recommended"
 }
