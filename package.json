@@ -1,6 +1,6 @@
 {
   "name": "intel-flow-highland",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "A module to hold highland flow types",
   "scripts": {
     "eslint": "eslint ./",
