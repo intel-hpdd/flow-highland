@@ -23,5 +23,9 @@
 import type {HighlandStream} from '../include/highland';
 
 declare module 'highland' {
-  declare var exports: { (xs:Array<any> | Function | Promise | void): HighlandStream; nil:Object }
+  declare var exports: {
+    (name:string, emitter:Function): HighlandStream;
+    (xs:Array<any> | Function | Promise | void): HighlandStream;
+    nil:Object;
+  }
 }
