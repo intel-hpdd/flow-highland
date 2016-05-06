@@ -33,6 +33,7 @@ export type HighlandStream = {
   consume(fn:(err:Error, x:any, push:Function, next:Function) => void):HighlandStream;
   pipe(dest:Writable):Writable;
   each(fn:(xs:any) => void):HighlandStream;
+  errors(fn:(err:Error, push:Function) => void):HighlandStream;
 }
 
 export type HighlandError = {
