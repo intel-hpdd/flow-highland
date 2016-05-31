@@ -35,6 +35,9 @@ export type HighlandStream = {
   each(fn:(xs:any) => void):HighlandStream;
   errors(fn:(err:Error, push:Function) => any):HighlandStream;
   through(fn:(s:HighlandStream) => HighlandStream):HighlandStream;
+  zip(ys:HighlandStream|Array<any>):HighlandStream;
+  pluck(prop:string):HighlandStream;
+  ratelimit(num:number, ms:number):HighlandStream;
 }
 
 export type HighlandError = {
