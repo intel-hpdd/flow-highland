@@ -6,3 +6,4 @@
 [libs]
 
 [options]
+experimental.strict_type_args=true

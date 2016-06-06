@@ -3,4 +3,4 @@
 .eslrintrc
 .flowconfig
 .gitignore
-.jscsrc
+/test
