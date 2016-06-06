@@ -8,7 +8,7 @@ declare module highland {
   declare type IdFn<T> = (xs:T) => any;
   declare type TransformFn<X,Y> = (xs:X) => Y;
   declare type pushFn<T> = (err:?Error, val:?T) => void;
-  declare type generatorFn<T> = (push:pushFn<T>, next:() => any) => void;
+  declare type generatorFn<T> = (push:pushFn<T>, next:() => void) => void;
   declare class HighlandStream<T> {
     _destructors:Function[];
     constructor<Type>(_: void): HighlandStream<Type>;
