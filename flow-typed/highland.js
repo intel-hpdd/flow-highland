@@ -30,8 +30,8 @@ declare module highland {
     ratelimit(num:number, ms:number):HighlandStream<T>;
     scan<R>(memo:R, fn:(memo:R, next:T) => R):HighlandStream<R>;
     emit(event: string, ...args:Array<any>): boolean;
-    on(event: string, listener: Function): HighlandStreamT<T>;
-    once(event: string, listener: Function): HighlandStreamT<T>;
+    on(event: string, listener: Function): HighlandStream<T>;
+    once(event: string, listener: Function): HighlandStream<T>;
   }
   declare type HighlandStreamT<T> = HighlandStream<T>;
   declare module.exports: {
