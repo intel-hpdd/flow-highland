@@ -15,7 +15,7 @@ declare module highland {
     constructor<Type>(_: null): HighlandStream<Type>;
     constructor<Type>(name:string, emitter:(...rest:any[]) => Type):HighlandStream<Type>;
     constructor<Type>(xs:Array<Type> | generatorFn<Type> | Promise<Type>):HighlandStream<Type>;
-    write(x:any):boolean;
+    write(x:T):boolean;
     destroy():void;
     tap<T>(fn:IdFn<T>):HighlandStream<T>;
     map<R>(fn:TransformFn<T, R>):HighlandStream<R>;
