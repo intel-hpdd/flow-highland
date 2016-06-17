@@ -2,13 +2,16 @@
 
 import type {Writable} from 'stream';
 
-
 declare module highland {
-  declare type nilT = {};
+  declare type argsToVoid = (...rest:mixed[]) => void;
+  declare type nilT = { __nil: true };
   declare type IdFn<T> = (xs:T) => any;
   declare type TransformFn<X,Y> = (xs:X) => Y;
-  declare type pushFn<T> = (err:?Error, val:?T) => void;
+  declare type pushFn<T> = (err:?Error, val:?(T | nilT)) => void;
   declare type generatorFn<T> = (push:pushFn<T>, next:() => void) => void;
+  declare interface emitterT {
+    on(event: string, listener: argsToVoid): emitterT;
+  }
   declare class HighlandStream<T> {
     _destructors:Function[];
     constructor<Type>(_: void): HighlandStream<Type>;
@@ -27,6 +30,7 @@ declare module highland {
     through<R>(fn:(s:HighlandStream<T>) => HighlandStream<R>):HighlandStream<R>;
     zip<R>(ys:HighlandStream<R>|Array<R>):HighlandStream<R>;
     pluck(prop:string):HighlandStream<Object>;
+    pull(fn:(err:Error, x:T) => void):void;
     ratelimit(num:number, ms:number):HighlandStream<T>;
     scan<R>(memo:R, fn:(memo:R, next:T) => R):HighlandStream<R>;
     emit(event: string, ...args:Array<any>): boolean;
@@ -39,7 +43,7 @@ declare module highland {
     <Type>(_:null):HighlandStream<Type>;
     <Type>(xs:generatorFn<Type>):HighlandStream<Type>;
     <Type>(xs:Array<Type> | Promise<Type>):HighlandStream<Type>;
-    <Type>(name:string, emitter:Function):HighlandStream<Type>;
+    <Type>(name:string, emitter:emitterT):HighlandStream<Type>;
     nil:nilT;
   }
 }
