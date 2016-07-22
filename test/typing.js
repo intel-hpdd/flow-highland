@@ -12,7 +12,8 @@ const s = highland([1, 2, 3]);
 (s:HighlandStreamT<string>);
 
 //should pass.
-const n = highland([1, 2, 3]);
+const n = highland([1, 2, 3])
+  .onDestroy(() => {});
 (n:HighlandStreamT<number>);
 
 const n2 = n.map(x => x + 's');
