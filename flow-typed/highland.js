@@ -33,7 +33,7 @@ declare module highland {
     pluck(prop:string):HighlandStream<Object>;
     pull(fn:(err:Error, x:T) => void):void;
     ratelimit(num:number, ms:number):HighlandStream<T>;
-    scan<R>(memo:R, fn:(memo:R, next:T) => R):HighlandStream<R>;
+    scan<R>(fn:(memo:R, next:T) => R, memo:R):HighlandStream<R>;
     emit(event: string, ...args:Array<any>): boolean;
     on(event: string, listener: Function): HighlandStream<T>;
     once(event: string, listener: Function): HighlandStream<T>;
