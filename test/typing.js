@@ -33,3 +33,11 @@ const g2 = highland(push => {
   push(null, 1);
 });
 (g2:HighlandStreamT<number>);
+
+//should pass
+const s3 =  highland([
+  [1, 2, 3]
+])
+  .flatten();
+
+(s3:HighlandStreamT<number>);

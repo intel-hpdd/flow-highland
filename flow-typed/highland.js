@@ -18,12 +18,16 @@ declare module highland {
     constructor<Type>(_: null): HighlandStream<Type>;
     constructor<Type>(name:string, emitter:(...rest:any[]) => Type):HighlandStream<Type>;
     constructor<Type>(xs:Array<Type> | generatorFn<Type> | Promise<Type>):HighlandStream<Type>;
+    collect():HighlandStream<T[]>;
     write(x:T):boolean;
     onDestroy():HighlandStream<T>;
     destroy():void;
     tap<T>(fn:IdFn<T>):HighlandStream<T>;
     map<R>(fn:TransformFn<T, R>):HighlandStream<R>;
     filter(fn:(x:T) => mixed):HighlandStream<T>;
+    flatten<R>():HighlandStreamT<R>;
+    flatMap<R>(fn:(x:T) => HighlandStream<R>):HighlandStream<R>;
+    group<R>(x:string):HighlandStream<R>;
     consume(fn:(err:Error, x:T, push:pushFn<T>, next:Function) => void):HighlandStream<T>;
     pipe(dest:Writable):Writable;
     each(fn:(x:T) => any):HighlandStream<nilT>;
