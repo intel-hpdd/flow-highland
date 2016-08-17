@@ -5,9 +5,13 @@ import type {Writable} from 'stream';
 declare module highland {
   declare type argsToVoid = (...rest:mixed[]) => void;
   declare type nilT = { __nil: true };
+  declare type errorWrapT = {
+    __HighlandStreamError__: true,
+    error: Error
+  };
   declare type IdFn<T> = (xs:T) => any;
   declare type TransformFn<X,Y> = (xs:X) => Y;
-  declare type pushFn<T> = (err:?Error, val:?(T | nilT)) => void;
+  declare type pushFn<T> = (err:?Error, val:?(nilT | T)) => void;
   declare type generatorFn<T> = (push:pushFn<T>, next:() => void) => void;
   declare interface emitterT {
     on(event: string, listener: argsToVoid): emitterT;
@@ -19,7 +23,7 @@ declare module highland {
     constructor<Type>(name:string, emitter:(...rest:any[]) => Type):HighlandStream<Type>;
     constructor<Type>(xs:Array<Type> | generatorFn<Type> | Promise<Type>):HighlandStream<Type>;
     collect():HighlandStream<T[]>;
-    write(x:T):boolean;
+    write(x:errorWrapT | T):boolean;
     merge():T;
     onDestroy():HighlandStream<T>;
     destroy():void;
