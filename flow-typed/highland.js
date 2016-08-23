@@ -39,7 +39,7 @@ declare module highland {
     errors(fn:(err:Error, push:pushFn<T>) => any):HighlandStream<T>;
     through<R>(fn:(s:HighlandStream<T>) => HighlandStream<R>):HighlandStream<R>;
     zip<R>(ys:HighlandStream<R>|Array<R>):HighlandStream<R>;
-    pluck(prop:string):HighlandStream<Object>;
+    pluck<R>(prop:string):HighlandStream<R>;
     pull(fn:(err:Error, x:T) => void):void;
     ratelimit(num:number, ms:number):HighlandStream<T>;
     scan<R>(fn:(memo:R, next:T) => R, memo:R):HighlandStream<R>;
