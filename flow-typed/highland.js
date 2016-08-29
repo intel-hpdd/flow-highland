@@ -54,6 +54,7 @@ declare module highland {
     <Type>(xs:generatorFn<Type>):HighlandStream<Type>;
     <Type>(xs:Array<Type> | Promise<Type>):HighlandStream<Type>;
     <Type>(name:string, emitter:emitterT):HighlandStream<Type>;
+    wrapCallback:<Type> (fn:(arg:any, cb:(err:?Error, v:Type) => any) => any) => () => HighlandStream<Type>;
     nil:nilT;
   }
 }
