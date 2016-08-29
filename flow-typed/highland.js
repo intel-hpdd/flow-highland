@@ -27,16 +27,19 @@ declare module highland {
     merge():T;
     onDestroy():HighlandStream<T>;
     destroy():void;
-    tap<T>(fn:IdFn<T>):HighlandStream<T>;
+    tap(fn:IdFn<T>):HighlandStream<T>;
     map<R>(fn:TransformFn<T, R>):HighlandStream<R>;
     filter(fn:(x:T) => mixed):HighlandStream<T>;
-    flatten<R>():HighlandStreamT<R>;
+    flatten<R>():HighlandStream<R>;
+    sequence<R>():HighlandStream<R>;
+    parallel():HighlandStream<T>;
     flatMap<R>(fn:(x:T) => HighlandStream<R>):HighlandStream<R>;
     group<R>(x:string):HighlandStream<R>;
     consume(fn:(err:Error, x:T, push:pushFn<T>, next:Function) => void):HighlandStream<T>;
     pipe(dest:Writable):Writable;
     each(fn:(x:T) => any):HighlandStream<nilT>;
     errors(fn:(err:Error, push:pushFn<T>) => any):HighlandStream<T>;
+    stopOnError(fn:(err:Error) => any):HighlandStream<T>;
     through<R>(fn:(s:HighlandStream<T>) => HighlandStream<R>):HighlandStream<R>;
     zip<R>(ys:HighlandStream<R>|Array<R>):HighlandStream<R>;
     pluck<R>(prop:string):HighlandStream<R>;
@@ -46,6 +49,7 @@ declare module highland {
     emit(event: string, ...args:Array<any>): boolean;
     on(event: string, listener: Function): HighlandStream<T>;
     once(event: string, listener: Function): HighlandStream<T>;
+    observe():HighlandStream<T>;
   }
   declare type HighlandStreamT<T> = HighlandStream<T>;
   declare module.exports: {
