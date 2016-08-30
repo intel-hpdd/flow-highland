@@ -38,6 +38,7 @@ declare module highland {
     consume(fn:(err:Error, x:T, push:pushFn<T>, next:Function) => void):HighlandStream<T>;
     pipe(dest:Writable):Writable;
     each(fn:(x:T) => any):HighlandStream<nilT>;
+    toArray(fn:(xs:T[]) => any):void;
     errors(fn:(err:Error, push:pushFn<T>) => any):HighlandStream<T>;
     stopOnError(fn:(err:Error) => any):HighlandStream<T>;
     through<R>(fn:(s:HighlandStream<T>) => HighlandStream<R>):HighlandStream<R>;
