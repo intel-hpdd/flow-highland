@@ -9,6 +9,7 @@ declare module highland {
     __HighlandStreamError__: true,
     error: Error
   };
+  declare type Fn1<A, B> = (a:A, ...rest:empty[]) => B;
   declare type IdFn<T> = (xs:T) => any;
   declare type TransformFn<X,Y> = (xs:X) => Y;
   declare type pushFn<T> = (err:?Error, val:?(nilT | T)) => void;
@@ -29,7 +30,7 @@ declare module highland {
     destroy():void;
     tap(fn:IdFn<T>):HighlandStream<T>;
     map<R>(fn:TransformFn<T, R>):HighlandStream<R>;
-    filter(fn:(x:T) => mixed):HighlandStream<T>;
+    filter(fn:(x:any) => boolean):HighlandStream<T>;
     flatten<R>():HighlandStream<R>;
     sequence<R>():HighlandStream<R>;
     parallel():HighlandStream<T>;
@@ -51,6 +52,9 @@ declare module highland {
     on(event: string, listener: Function): HighlandStream<T>;
     once(event: string, listener: Function): HighlandStream<T>;
     observe():HighlandStream<T>;
+    fork():HighlandStream<T>;
+    end():void;
+    done():void;
   }
   declare type HighlandStreamT<T> = HighlandStream<T>;
   declare module.exports: {
@@ -59,6 +63,10 @@ declare module highland {
     <Type>(xs:generatorFn<Type>):HighlandStream<Type>;
     <Type>(xs:Array<Type> | Promise<Type>):HighlandStream<Type>;
     <Type>(name:string, emitter:emitterT):HighlandStream<Type>;
+    map<A, B>(fn:Fn1<A, B>, ...rest:void[]):Fn1<HighlandStream<A>, HighlandStream<B>>;
+    filter<A>(fn:Fn1<A, boolean>, ...rest:void[]):Fn1<HighlandStream<A>, HighlandStream<A>>;
+    tap<A>(fn:Fn1<A, any>, ...rest:void[]):Fn1<HighlandStream<A>, HighlandStream<A>>;
+    isStream(x:HighlandStream<any>):boolean;
     wrapCallback:<Type> (fn:(arg:any, cb:(err:?Error, v:Type) => any) => any) => () => HighlandStream<Type>;
     nil:nilT;
   }
