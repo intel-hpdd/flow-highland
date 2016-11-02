@@ -18,13 +18,14 @@
   "author": "IML Team",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "6.14.0",
-    "babel-eslint": "6.1.2",
-    "babel-plugin-transform-flow-strip-types": "6.14.0",
-    "babel-preset-es2015": "6.14.0",
-    "eslint": "3.4.0",
-    "eslint-plugin-flowtype": "2.11.4",
-    "highland": "2.9.0",
+    "babel-core": "6.18.2",
+    "babel-eslint": "7.1.0",
+    "babel-plugin-transform-flow-strip-types": "6.18.0",
+    "babel-preset-es2015": "6.18.0",
+    "eslint": "3.9.1",
+    "eslint-plugin-flowtype": "2.25.0",
+    "highland": "3.0.0-beta.2",
+    "intel-fp": "7.0.0",
     "pre-commit": "1.1.3"
   }
 }
