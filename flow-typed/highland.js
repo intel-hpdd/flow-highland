@@ -44,6 +44,7 @@ declare module highland {
     stopOnError(fn:(err:Error) => any):HighlandStream<T>;
     through<R>(fn:(s:HighlandStream<T>) => HighlandStream<R>):HighlandStream<R>;
     zip<R>(ys:HighlandStream<R>|Array<R>):HighlandStream<R>;
+    uniqBy((T[], T[]) => boolean):HighlandStream<T>;
     pluck<R>(prop:string):HighlandStream<R>;
     pull(fn:(err:Error, x:T) => void):void;
     ratelimit(num:number, ms:number):HighlandStream<T>;
