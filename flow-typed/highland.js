@@ -52,7 +52,7 @@ declare module highland {
     through<R>(
       fn: (s: HighlandStream<T>) => HighlandStream<R>
     ): HighlandStream<R>,
-    zip<R>(ys: HighlandStream<R> | Array<R>): HighlandStream<R>,
+    zip<R>(ys: HighlandStream<R> | Array<R>): HighlandStream<[T, R]>,
     uniqBy(fn: (T, T) => boolean): HighlandStream<T>,
     pluck<R>(prop: string): HighlandStream<R>,
     pull(fn: (err: Error, x: T) => void): void,
