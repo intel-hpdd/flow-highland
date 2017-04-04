@@ -46,3 +46,26 @@ const s4 = highland.map(x => x + 1);
 const s5 = highland.filter(x => x != null);
 
 (s5: (xs: HighlandStreamT<number>) => HighlandStreamT<number>);
+
+// Zip
+const zipper1 = highland([[{ name: 'John Doe' }, { name: 'Jane Doe' }]]).zip([
+  [{ id: 1 }, { id: 2 }]
+]);
+(zipper1: HighlandStreamT<[{ name: string }[], { id: number }[]]>);
+
+const zipper2 = highland([{ name: 'John Doe' }, { name: 'Jane Doe' }]).zip([
+  { id: 1 },
+  { id: 2 }
+]);
+(zipper2: HighlandStreamT<[{ name: string }, { id: number }]>);
+
+const zipper3 = highland([[{ name: 'John Doe' }, { name: 'Jane Doe' }]]).zip([
+  { id: 1 },
+  { id: 2 }
+]);
+(zipper3: HighlandStreamT<[{ name: string }[], { id: number }]>);
+
+const zipper4 = highland([{ name: 'John Doe' }, { name: 'Jane Doe' }]).zip([
+  [{ id: 1 }, { id: 2 }]
+]);
+(zipper4: HighlandStreamT<[{ name: string }, { id: number }[]]>);
