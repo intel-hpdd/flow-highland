@@ -1,5 +1,5 @@
 {
-  "name": "intel-flow-highland",
+  "name": "@iml/flow-highland",
   "version": "3.11.1",
   "description": "A module to hold highland flow types",
   "scripts": {
