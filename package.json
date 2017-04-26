@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.intel.com/MFL/flow-highland.git"
+    "url": "https://github.com/intel-hpdd/flow-highland.git"
   },
   "publishConfig": {
     "access": "public"
@@ -27,7 +27,6 @@
     "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-prettier": "^2.0.1",
     "highland": "3.0.0-beta.2",
-    "@mfl/fp": "7.0.0",
     "pre-commit": "^1.2.2",
     "prettier": "^0.22.0"
   }
