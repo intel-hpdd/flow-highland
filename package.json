@@ -1,6 +1,6 @@
 {
   "name": "@mfl/flow-highland",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "A module to hold highland flow types",
   "scripts": {
     "eslint": "eslint ./"
@@ -26,8 +26,8 @@
     "eslint-config-prettier": "^1.5.0",
     "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-prettier": "^2.0.1",
-    "highland": "3.0.0-beta.2",
+    "highland": "3.0.0-beta.4",
     "pre-commit": "^1.2.2",
-    "prettier": "^0.22.0"
+    "prettier": "1.2.2"
   }
 }
