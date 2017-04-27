@@ -1,6 +1,6 @@
 // @flow
 
-import type { Writable, Readable } from 'stream';
+import type { Writable, Readable, Duplex } from 'stream';
 
 declare module highland {
   declare type argsToVoid = (...rest: mixed[]) => void;
@@ -52,6 +52,7 @@ declare module highland {
     through<R>(
       fn: (s: HighlandStream<T>) => HighlandStream<R>
     ): HighlandStream<R>,
+    through<R>(Duplex): HighlandStream<R>,
     zip<R>(ys: HighlandStream<R> | Array<R>): HighlandStream<[T, R]>,
     uniqBy(fn: (T, T) => boolean): HighlandStream<T>,
     pluck<R>(prop: string): HighlandStream<R>,
