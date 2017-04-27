@@ -1,6 +1,6 @@
 // @flow
 
-import type { Writable } from 'stream';
+import type { Writable, Readable } from 'stream';
 
 declare module highland {
   declare type argsToVoid = (...rest: mixed[]) => void;
@@ -41,9 +41,9 @@ declare module highland {
     parallel(): HighlandStream<T>,
     flatMap<R>(fn: (x: T) => HighlandStream<R>): HighlandStream<R>,
     group<R>(x: string): HighlandStream<R>,
-    consume(
-      fn: (err: Error, x: T, push: pushFn<T>, next: Function) => void
-    ): HighlandStream<T>,
+    consume<R>(
+      fn: (err: Error, x: T, push: pushFn<R>, next: Function) => void
+    ): HighlandStream<R>,
     pipe(dest: Writable): Writable,
     each(fn: (x: T) => any): HighlandStream<nilT>,
     toArray(fn: (xs: T[]) => any): void,
@@ -63,6 +63,7 @@ declare module highland {
     once(event: string, listener: Function): HighlandStream<T>,
     observe(): HighlandStream<T>,
     fork(): HighlandStream<T>,
+    invoke(string, any[]): HighlandStreamT<T>,
     end(): void,
     done(): void
   }
@@ -73,6 +74,10 @@ declare module highland {
     <Type>(xs: generatorFn<Type>): HighlandStream<Type>,
     <Type>(xs: Array<Type> | Promise<Type>): HighlandStream<Type>,
     <Type>(name: string, emitter: emitterT): HighlandStream<Type>,
+    <Type>(
+      stream: Readable,
+      cb: (Readable, Function) => Function
+    ): HighlandStream<Type>,
     map<A, B>(
       fn: Fn1<A, B>,
       ...rest: void[]
