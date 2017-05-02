@@ -2,6 +2,8 @@
 
 import highland from 'highland';
 
+import { Readable, Writable, Duplex } from 'stream';
+
 import type { HighlandStreamT } from 'highland';
 
 // $ExpectError
@@ -69,3 +71,12 @@ const parallel = highland([
   highland(['3', '4'])
 ]).parallel(2);
 (parallel: HighlandStreamT<string>);
+
+const readable = new Readable();
+(readable: Readable);
+
+const writable = new Writable();
+(writable: Writable);
+
+const duplex = new Duplex();
+(duplex: Duplex);
