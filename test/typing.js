@@ -2,6 +2,8 @@
 
 import highland from 'highland';
 
+import { Readable, Writable, Duplex } from 'stream';
+
 import type { HighlandStreamT } from 'highland';
 
 // $ExpectError
@@ -63,3 +65,12 @@ const zipper4 = highland([{ name: 'John Doe' }, { name: 'Jane Doe' }]).zip([
   [{ id: 1 }, { id: 2 }]
 ]);
 (zipper4: HighlandStreamT<[{ name: string }, { id: number }[]]>);
+
+const readable = new Readable();
+(readable: Readable);
+
+const writable = new Writable();
+(writable: Writable);
+
+const duplex = new Duplex();
+(duplex: Duplex);
