@@ -66,6 +66,12 @@ const zipper4 = highland([{ name: 'John Doe' }, { name: 'Jane Doe' }]).zip([
 ]);
 (zipper4: HighlandStreamT<[{ name: string }, { id: number }[]]>);
 
+const parallel = highland([
+  highland(['1', '2']),
+  highland(['3', '4'])
+]).parallel(2);
+(parallel: HighlandStreamT<string>);
+
 const readable = new Readable();
 (readable: Readable);
 
