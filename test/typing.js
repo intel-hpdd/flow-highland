@@ -80,3 +80,11 @@ const writable = new Writable();
 
 const duplex = new Duplex();
 (duplex: Duplex);
+
+const otherwise = highland([]).otherwise(highland([4, 5, 6]));
+(otherwise: HighlandStreamT<number>);
+
+const otherwise2 = highland(['a', 'b', 'c']).otherwise(
+  highland(['d', 'e', 'f'])
+);
+(otherwise2: HighlandStreamT<string>);

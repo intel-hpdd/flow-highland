@@ -62,6 +62,7 @@ declare module highland {
     on(event: string, listener: Function): HighlandStream<T>,
     once(event: string, listener: Function): HighlandStream<T>,
     observe(): HighlandStream<T>,
+    otherwise(s: HighlandStream<T>): HighlandStream<T>,
     fork(): HighlandStream<T>,
     invoke(string, any[]): HighlandStreamT<T>,
     end(): void,
