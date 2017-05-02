@@ -1,8 +1,8 @@
 // @flow
 
-import type { Writable, Readable, Duplex } from 'stream';
-
 declare module highland {
+  import type { Writable, Readable, Duplex } from 'stream';
+
   declare type argsToVoid = (...rest: mixed[]) => void;
   declare type nilT = { __nil: true };
   declare type errorWrapT = {
