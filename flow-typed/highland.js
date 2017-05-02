@@ -38,7 +38,7 @@ declare module highland {
     filter(fn: (x: any) => boolean): HighlandStream<T>,
     flatten<R>(): HighlandStream<R>,
     sequence<R>(): HighlandStream<R>,
-    parallel(): HighlandStream<T>,
+    parallel<R>(): HighlandStream<R>,
     flatMap<R>(fn: (x: T) => HighlandStream<R>): HighlandStream<R>,
     group<R>(x: string): HighlandStream<R>,
     consume<R>(
