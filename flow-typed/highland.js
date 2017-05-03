@@ -75,8 +75,8 @@ declare module highland {
     <Type>(xs: Array<Type> | Promise<Type>): HighlandStream<Type>,
     <Type>(name: string, emitter: emitterT): HighlandStream<Type>,
     <Type>(
-      stream: stream$Readable,
-      cb?: (stream$Readable, Function) => Function
+      stream: $Subtype<stream$Readable>,
+      cb?: ($Subtype<stream$Readable>, Function) => Function
     ): HighlandStream<Type>,
     map<A, B>(
       fn: Fn1<A, B>,
