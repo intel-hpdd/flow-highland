@@ -1,5 +1,4 @@
 // @flow
-import type stream from 'stream';
 
 declare module highland {
   declare type argsToVoid = (...rest: mixed[]) => void;
@@ -43,7 +42,7 @@ declare module highland {
     consume<R>(
       fn: (err: Error, x: T, push: pushFn<R>, next: Function) => void
     ): HighlandStream<R>,
-    pipe(dest: stream.Writable): stream.Writable,
+    pipe(dest: stream$Writable): stream$Writable,
     each(fn: (x: T) => any): HighlandStream<nilT>,
     toArray(fn: (xs: T[]) => any): void,
     errors(fn: (err: Error, push: pushFn<T>) => any): HighlandStream<T>,
@@ -51,7 +50,7 @@ declare module highland {
     through<R>(
       fn: (s: HighlandStream<T>) => HighlandStream<R>
     ): HighlandStream<R>,
-    through<R>(stream.Duplex): HighlandStream<R>,
+    through<R>(stream$Duplex): HighlandStream<R>,
     zip<R>(ys: HighlandStream<R> | Array<R>): HighlandStream<[T, R]>,
     uniqBy(fn: (T, T) => boolean): HighlandStream<T>,
     pluck<R>(prop: string): HighlandStream<R>,
@@ -76,8 +75,8 @@ declare module highland {
     <Type>(xs: Array<Type> | Promise<Type>): HighlandStream<Type>,
     <Type>(name: string, emitter: emitterT): HighlandStream<Type>,
     <Type>(
-      stream: stream.Readable,
-      cb: (stream.Readable, Function) => Function
+      stream: stream$Readable,
+      cb?: (stream$Readable, Function) => Function
     ): HighlandStream<Type>,
     map<A, B>(
       fn: Fn1<A, B>,
