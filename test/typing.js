@@ -74,12 +74,18 @@ const parallel = highland([
 
 const readable = new Readable();
 (readable: Readable);
+highland(readable);
+highland(readable, (x, fn) => fn);
 
 const writable = new Writable();
 (writable: Writable);
 
+// $ExpectError
+highland(writable);
+
 const duplex = new Duplex();
 (duplex: Duplex);
+highland(duplex);
 
 const otherwise = highland([]).otherwise(highland([4, 5, 6]));
 (otherwise: HighlandStreamT<number>);
