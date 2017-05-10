@@ -38,7 +38,7 @@ declare module highland {
     sequence<R>(): HighlandStream<R>,
     parallel<R>(): HighlandStream<R>,
     flatMap<R>(fn: (x: T) => HighlandStream<R> | R[]): HighlandStream<R>,
-    group<R>(x: string): HighlandStream<R>,
+    group<R>(x: string): HighlandStream<{|[key: string]: Array<R>|}>,
     consume<R>(
       fn: (err: Error, x: T, push: pushFn<R>, next: Function) => void
     ): HighlandStream<R>,
