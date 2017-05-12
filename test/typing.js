@@ -94,3 +94,34 @@ const otherwise2 = highland(['a', 'b', 'c']).otherwise(
   highland(['d', 'e', 'f'])
 );
 (otherwise2: HighlandStreamT<string>);
+
+type Person = {
+  name: string,
+  id: number,
+  age: number,
+  country: string
+};
+
+const people: Person[] = [
+  {
+    name: 'John',
+    id: 1,
+    age: 25,
+    country: 'USA'
+  },
+  {
+    name: ' Friedrich',
+    id: 2,
+    age: 27,
+    country: 'Germany'
+  }
+];
+
+const pickNameAndAge = highland(people).pick(['name', 'age']);
+(pickNameAndAge: HighlandStreamT<{ name: string, age: string }>);
+
+const reduce1 = highland(people).reduce1((a, b) => a.id && b.id);
+(reduce1: HighlandStreamT<number>);
+
+const splitter = highland(['this\n is\n some\n message']).split();
+(splitter: HighlandStreamT<string>);
