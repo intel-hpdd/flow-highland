@@ -96,7 +96,7 @@ declare module highland {
     isStream(x: HighlandStream<any>): boolean,
     wrapCallback: <Type>(
       fn: (arg: any, cb: (err: ?Error, v: Type) => any) => any
-    ) => () => HighlandStream<Type>,
+    ) => (...args: any[]) => HighlandStream<Type>,
     nil: nilT
   };
 }
