@@ -68,7 +68,7 @@ declare module highland {
     fork(): HighlandStream<T>,
     invoke(string, any[]): HighlandStreamT<T>,
     end(): void,
-    done(): void
+    done(cb: ?Function): void
   }
   declare type HighlandStreamT<T> = HighlandStream<T>;
   declare module.exports: {
