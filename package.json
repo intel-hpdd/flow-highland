@@ -1,5 +1,5 @@
 {
-  "name": "@mfl/flow-highland",
+  "name": "@iml/flow-highland",
   "version": "4.2.8",
   "description": "A module to hold highland flow types",
   "scripts": {
@@ -17,7 +17,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "author": "MFL Team",
+  "author": "IML Team",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.25.0",
