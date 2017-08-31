@@ -59,6 +59,7 @@ declare module highland {
     ratelimit(num: number, ms: number): HighlandStream<T>,
     reduce1<R>(fn: (T, T) => R): HighlandStream<R>,
     scan<R>(fn: (memo: R, next: T) => R, memo: R): HighlandStream<R>,
+    concat(ys: HighlandStream<T> | Array<T>): HighlandStream<T>,
     split(): HighlandStream<T>,
     emit(event: string, ...args: Array<any>): boolean,
     on(event: string, listener: Function): HighlandStream<T>,
