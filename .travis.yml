@@ -1,15 +1,24 @@
-language: node_js
-node_js:
-- 6
-cache: yarn
-script:
-- yarn run eslint
-- yarn run flow
-deploy:
-  provider: npm
-  email: joe.grund@intel.com
-  api_key:
-    secure: t3t7ucx2LTKFkJqRtKgnjO6bDO41Okfyo+chFMByQr6YInZlSMQ9IyQm/Q5vSOhzWtIvF8JDuSr6SFI1BrPCOp1+eBwekTlHajLblgoMCzSSOq5NZfm82V2sCHFkVvXeAPtBp1NYgAv0I5kc8YR8TiDZ46MCb5bDCN1FRad51DofMyo4cACyjlTyFidXaf7SnoS5Nme3r7vKUKS5J/N1nnPevxIl+U1wRVK2y/OlUsPhUdSbkt0KYpCcEo76vis0p1oQko9XomEkhw3NyJd6VlbPmzlZR57nWjDq5mOmKQBw6j5Uc/xIAEu0YPHO9KLKvVlhhTrZq5cMC/zFZI7X+fOWuJATxq/vFF3z4pSiotwea9Hdo15U8TmHMqgN67ZTRlUGZL9hLW6pDm9U5wX5qEcpGgBdw0xPpPRP6QgnlEHY0HA8btgheizVhQ8oW0CPIF8Zqw/94qQmxEycXI93xPVTTB06MsVAd9FSYL5pvyyrqvHwMTSP34t4WS9fEDmeANUHqGnK8PnBmvj4rM/KCkRg8YRrr8XALOoQujmjqjwyHAi5OzV1d9vnG5OSVwdsH6E2K3MCvPw75IU02WEmDiAq+Zfxa/xy0i1T6vBHyZj+X5LVgLRpbs8Q7Kd107ES6GYxXYBGxaybyo7ZFVlpgZKSw7wj4xHUMMJO5nnd6Vs=
-  on:
-    tags: true
-    repo: intel-hpdd/flow-highland
+jobs:
+  include:
+    - stage: test
+      env: Type='virus scan'
+      script:
+        - sudo apt-get install clamav -y
+        - sudo freshclam
+        - clamscan --quiet -r ./
+    - stage: test
+      env: Type='unit test'
+      language: node_js
+      node_js:
+      - 6
+      cache: yarn
+      script:
+      - yarn run eslint
+      - yarn run flow
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        on:
+          tags: true
+          repo: intel-hpdd/flow-highland
