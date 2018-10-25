@@ -1,39 +1,14 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-    "flowtype",
-    "prettier"
-  ],
+  "plugins": ["flowtype", "prettier"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true
-      }
-    ],
+    "prettier/prettier": ["error"],
     "flowtype/define-flow-type": 1,
     "flowtype/use-flow-type": 1,
-    "quotes": [
-      2,
-      "single"
-    ],
-    "linebreak-style": [
-      2,
-      "unix"
-    ],
-    "semi": [
-      2,
-      "always"
-    ],
-    "indent": [
-      2,
-      2
-    ],
-    "curly": [
-      2,
-      "multi",
-      "consistent"
-    ]
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "indent": [2, 2],
+    "curly": [2, "multi", "consistent"]
   },
   "env": {
     "es6": true,
@@ -43,8 +18,5 @@
     "ecmaVersion": 6,
     "sourceType": "module"
   },
-  "extends": [
-    "eslint:recommended",
-    "prettier"
-  ]
+  "extends": ["eslint:recommended", "prettier"]
 }
